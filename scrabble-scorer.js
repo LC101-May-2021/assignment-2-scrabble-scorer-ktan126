@@ -63,50 +63,51 @@ function vowelBonusScore(word) {
 } 
 
 function scrabbleScore(word) {
+  // word = word.toUpperCase
 }
 
 let simpleScoreOpt = {
   name: "Simple Score",
   description: "Each letter is worth 1 point.",
-  scoringFunction: "A function with a parameter for user input that returns a score"
+  scoringFunction: simpleScore
 };
 
 let vowelBonusScoreOpt = {
   name: "Bonus Vowels",
   description: "Vowels are 3 pts, consonants are 1 pt.",
-  scoringFunction: "A function that returns a score based on the number of vowels and consonants."
+  scoringFunction: vowelBonusScore
 };
 
 let scrabbleOpt = {
   name: "Scrabble",
   description: "The traditional scoring algorithm.",
-  scoringFunction: "Uses the oldScrabbleScorer() function to determine the score for a given word."
+  scoringFunction: scrabbleScore
 };
 
 const scoringAlgorithms = [simpleScoreOpt, vowelBonusScoreOpt, scrabbleOpt];
 
 
 function scorerPrompt() {
-  let scorerPrompt = 0
-    while (scorerPrompt < 3) {
-      scorerPrompt = input.question("Which scoring algorithm would you like to use? \n0 - Simple: One point per character \n1 - Vowel Bonus: Vowels are worth 3 points \n2 - Scrabble: Uses scrabble point system \nEnter 0, 1, or 2: ")
-      for (let i = 0; i < scoringAlgorithms.length; i++) {
-        scorerPrompt = scoringAlgorithms[i]
-      } 
-      }
-    
-    }
-    return scorerPrompt;
+    let scorerPrompt = input.question("Which scoring algorithm would you like to use? \n\n0 - Simple: One point per character \n1 - Vowel Bonus: Vowels are worth 3 points \n2 - Scrabble: Uses scrabble point system \nEnter 0, 1, or 2: ")
+      
+    return scoringAlgorithms[scorerPrompt].scoringFunction(userWord);
 }
 
-function transform() {};
+function transform(oldPointStructure) {
+  for (const key in oldPointStructure) {
+   for (let i = 0; i < oldPointStructure[key].length; i++) {
+
+    }
+  } return transform;
+}; console.log(oldPointStructure[key][i]));
+
 
 let newPointStructure;
 
 function runProgram() {
    initialPrompt();
   //  console.log(vowelBonusScore(userWord));
-  console.log(scorerPrompt(scoringAlgorithms));
+  console.log(`Score for '${userWord}': ${scorerPrompt(scoringAlgorithms)}`);
 }
 
 // Don't write any code below this line //
